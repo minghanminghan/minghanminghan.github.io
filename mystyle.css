@@ -1,0 +1,92 @@
+body {
+    height:100vh;
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    background: #edf2f4;
+}
+p{
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 23px;
+    color:black;
+}
+.top-box{
+    min-height:10vh;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background: #8d99ae;
+}
+#name{
+    text-align: center;
+    color: black;
+    font-size: 50px;
+    font-weight: bold;}
+.main-content{
+    min-height:35vh;
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 50px;
+}
+.headshot{
+    float:left;
+    margin-left: 30px;
+    margin-right: 50px;
+    margin-top: 15px;
+}
+#text {
+    text-align: justify;
+    margin-top: 30px;
+    margin-left:40px;
+    margin-right:40px;
+} 
+.extra-content{
+    min-height:13vh;
+    padding-top: 20px;
+}
+#text-under-image{
+    text-align:center;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+/*
+.circle {
+    height: 50px;
+    width: 50px;
+    background-color: #bbb;
+    border-radius: 50%;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    margin-left:auto;
+    margin-right:auto;
+    background: red;
+    animation: mymove 5s infinite;
+}
+@keyframes mymove {
+    from {background-color: red;}
+    to {background-color: blue;}
+}
+*/
+.bottom-box{
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+    padding-top: 25px;
+    padding-bottom: 40px;
+    background: #2b2d42;
+}
+#bottom-text{
+    text-align: center; 
+    color:white; 
+    font-weight:bold;
+}
+.socials-container {
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+.img {
+    margin-left: 10px;
+    margin-right: 10px;
+    justify-content: space-within;
+    display:relative;
+}
