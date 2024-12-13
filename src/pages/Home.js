@@ -13,7 +13,7 @@ export default function Home() {
     <div>
         <NavBar />
         <div className="main">
-          <img src="./headshot2.jpg" alt="Andrew headshot" id="headshot"></img>
+          <img src="headshot2.jpg" alt="Andrew headshot" id="headshot"></img>
           <div className="mini">
             <h2>About Me</h2>
             <p className="content">

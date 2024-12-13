@@ -40,7 +40,7 @@ export default function Work() {
                     source: 'https://devpost.com/software/aimlearn',
                 }}/>
                 <Project info={{
-                    name: 'Conway\s Game of Life',
+                    name: 'Conway\'s Game of Life',
                     desc: 'PyGame implementation of Conway\'s Game of Life',
                     stack: 'Python',
                     libs: 'PyGame',

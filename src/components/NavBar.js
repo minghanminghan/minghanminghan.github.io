@@ -26,7 +26,7 @@ export default function NavBar() {
                 <p className="link" id="/" onClick={(e) => {handleClick(e.target.id)}}>About</p>
                 <p className="link" id="work" onClick={(e) => {handleClick(e.target.id)}}>Work</p>
                 <p className="link" id="contact" onClick={(e) => {handleClick(e.target.id)}}>Contact</p>
-                <p className="link" id="resume" onClick={(e) => {openTab('/resume')}}>Resume</p>
+                <p className="link" id="resume" onClick={(e) => {openTab('https://drive.google.com/file/d/16Wz2klpxsVC1WGUVK_pmd6HSyFx9_hE3/view?usp=drive_link')}}>Resume</p>
             </div>
         </div>
     );

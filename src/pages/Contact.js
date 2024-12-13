@@ -20,7 +20,7 @@ export default function Contact() {
       <button type="submit">Submit</button>
     </form></>);
 
-  const mail = emailjs.init({
+  emailjs.init({
     publicKey: 'oBlUyL9NjyjRp5I6S',
     // Do not allow headless browsers
     blockHeadless: true,

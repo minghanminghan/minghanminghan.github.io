@@ -1,8 +1,6 @@
 import "../css/Project.css";
 
 export default function Project({ info }) {
-    /* props outline: name, desc, stack, libs, source */
-    console.log(info);
     
     function handleClick() {
         window.open(info.source, '_blank').focus();
