@@ -3,12 +3,6 @@ import NavBar from '../components/NavBar';
 
 export default function Home() {
 
-  /*
-  <p>Experience</p>
-  <p>Frameworks</p>
-  <p>Interests</p>
-  <p>Hobbies</p>
-  */
   return (
     <div>
         <NavBar />
@@ -19,8 +13,8 @@ export default function Home() {
             <p className="content">
               Hi, I'm Andrew!
               <br/>I'm an NYU Junior majoring Computer Science and Math, and minoring in Psychology.
-              <br/>I'm interested in all things software and technical, including software engineering, machine learning, full stack development, and hackathons.
-              <br/>If anything interests you please out!
+              <br/>I'm interested in all things technical, including software engineering, full stack development, machine learning, and hackathons.
+              <br/>If anything interests you please reach out!
             </p>
           </div>
         </div>
