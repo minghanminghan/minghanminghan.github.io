@@ -1,0 +1,40 @@
+.project {
+    display: flex;
+    flex-direction: row;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    width: 60vw;
+    outline: 1px solid black;
+    border-radius: 25px;
+    cursor:pointer;
+}
+
+.project > #name {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: left;
+    width: 20vw;
+}
+
+.flexCol {
+    display: flex;
+    flex-direction: column;
+}
+
+.flexCol > div {
+    display: flex;
+    line-height: 0px;
+}
+
+.largeText {
+    font-size: 20px;
+}
+
+.bold {
+    text-decoration: underline;
+    width: 7vw;
+}

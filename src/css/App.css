@@ -1,0 +1,96 @@
+body {
+  background-color: #EFF8E2;
+}
+
+form {
+  height:100%;
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+input {
+  width: 33vw;
+}
+
+object {
+  width: 100vw;
+  height: 100vh;
+}
+
+h2 {
+  font-size: 40px;
+  text-decoration: underline;
+}
+
+/*
+p {
+  outline: 1px solid black;
+}
+*/
+
+.center {
+  text-align: center;
+}
+
+
+.mini {
+  margin-left: 3vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  margin-left: 15vw;
+  margin-right: 15vw;
+  margin-top: 10vh;
+  margin-bottom: 5vh;
+  text-align: left;
+}
+
+.content {
+  font-size: 25px;
+  margin-bottom: 3vh;
+}
+
+.contact#main {
+  width: fit-content;
+  margin-top: 5vw;
+  margin-left: 33vw;
+  justify-content: center;
+  text-align: center;
+}
+
+form > .contentLeft {
+  text-align: left;
+  margin-left: 10vw;
+}
+
+input {
+  width: 10vw;
+}
+
+textarea {
+  width: 30vw;
+}
+
+form.short {
+  width: 15vw;
+}
+
+#message {
+  height: 25vh;
+}
+
+img#headshot {
+  height: auto; 
+  width: auto; 
+  max-width: 50vw; 
+  max-height: 60vh;
+  border-radius: 50px;
+}

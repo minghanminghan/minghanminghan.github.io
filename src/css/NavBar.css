@@ -1,0 +1,49 @@
+/* css imported from component carries over to App */
+
+.navbar.wrapper {
+    background-color: #DBEFBD;
+    display: flex;
+    justify-content: space-between;
+}
+
+.child {
+    width: 50vw;
+    align-items: flex-end;
+    vertical-align: middle;
+    align-items: center;
+}
+
+img {
+    height: auto; 
+    width: auto; 
+    max-width: 40px; 
+    max-height: 40px;
+}
+
+#icons {
+    margin-top: 5px;
+    width: auto;
+}
+
+.link {
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.link:hover {
+    text-decoration-color: black;
+    text-decoration: underline;
+}
+
+.icon {
+    margin-left: 0.5vw;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 2vw;
+    margin-right: 0.5vw;
+}
