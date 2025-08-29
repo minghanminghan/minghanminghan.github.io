@@ -1,1 +1,0 @@
-(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,18566,(e,t,i)=>{t.exports=e.r(76562)},17630,e=>{"use strict";e.s(["default",()=>o]);var t=e.i(18566),i=e.i(29859);function o(){let{setActive:e}=(0,i.useViewContext)();e("Resume"),(0,t.redirect)("/Andrew_Jiang_Resume.pdf")}}]);
