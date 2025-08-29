@@ -1,7 +1,9 @@
 'use client'
 
-import { redirect } from "next/navigation"
+import Page from "./home/page"
 
 export default function Home() {
-  redirect('/home')
+  return (
+    <Page />
+  )
 }
