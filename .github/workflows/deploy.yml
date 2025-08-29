@@ -25,7 +25,7 @@ jobs:
       # 4. Build Next.js static export
       - run: |
           npm run build
-          npx next export -o out
+          npx next export
 
       # 5. Configure Git
       - run: |
