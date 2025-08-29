@@ -1,6 +1,5 @@
 'use client'
 
-
 import { Box, Typography } from "@mui/material"
 import { useViewContext } from "../../context/ViewContext"
 import Image from "next/image"
@@ -43,22 +42,22 @@ export default function Page() {
                 />
             </Box>
             <Typography>
-                Hi! I’m Andrew, a software engineer based in NYC.
+                Hi! I&#39;m Andrew, a software engineer based in NYC.
             </Typography>
             <Typography>
-                I'm a senior at NYU studying Computer Science, Mathematics, and Psychology.
+                I&#39;m a senior at NYU studying Computer Science, Mathematics, and Psychology.
             </Typography>
             <Typography>
                 I recently interned at Disney as a Software Engineer, where I built AI solutions for the Customer Service Tooling team.
             </Typography>
             <Typography>
-                I'm experienced in working with web apps and technologies through internship, hackathon, and project experiences.
+                I&#39;m experienced in working with web apps and technologies through internship, hackathon, and project experiences.
             </Typography>
             <Typography>
-                I'm passionate about machine learning, and have been building out deep learning and agentic systems in my free time.
+                I&#39;m passionate about machine learning, and have been building out deep learning and agentic systems in my free time.
             </Typography>
             <Typography>
-                I'm always excited to learn, collaborate, and build- feel free to reach out and contact me!
+                I&#39;m always excited to learn, collaborate, and build- feel free to reach out and contact me!
             </Typography>
         </StackUI>
     </Box>

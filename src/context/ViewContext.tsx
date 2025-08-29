@@ -16,10 +16,6 @@ const ViewContext = createContext<ViewContextType | null>(null)
 export function ViewProvider ({ children }: { children: ReactNode }) {
   const [active, setActive] = useState<ViewOptions>('Home')
 
-  const toggleView = (newView: ViewOptions) => {
-    setActive(newView)
-  }
-
   return (
     <ViewContext.Provider value={{ active, setActive }}>
       {children}

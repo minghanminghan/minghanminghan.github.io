@@ -24,8 +24,8 @@ export default function Page() {
             </Typography>
         </Box>
         <StackUI>
-            {Projects.map(v => 
-                <Box>
+            {Projects.map((v, i) => 
+                <Box key={i}>
                     <Typography fontWeight='bold'>
                         {v.name}
                     </Typography>

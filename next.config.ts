@@ -1,5 +1,8 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === "production"
+const repoName = "minghanminghan.github.io"
+
 const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname
@@ -7,8 +10,8 @@ const nextConfig: NextConfig = {
   output: "export",
   distDir: "out",
   images: { unoptimized: true },
-  basePath: "/minghanminghan.github.io",
-  assetPrefix: "/minghanminghan.github.io/",
+  basePath: isProd ? `/${repoName}` : "",
+  assetPrefix: isProd ? `/${repoName}/` : "",
 };
 
 export default nextConfig;
