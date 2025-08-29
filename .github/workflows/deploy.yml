@@ -8,22 +8,37 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
+      # 1. Checkout code
       - uses: actions/checkout@v3
 
+      # 2. Set up Node
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
 
-      - name: Install dependencies
-        run: npm ci
+      # 3. Install dependencies
+      - run: npm ci
 
-      - name: Build
-        run: npm run build   # next.config.ts with output: "export" handles static export
+      # 4. Build Next.js static export
+      - run: |
+          npm run build
+          npx next export -o out
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.PAT_TOKEN }}
-          publish_dir: ./out  # same distDir as in next.config.ts
+      # 5. Configure Git
+      - run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      # 6. Push static site to `gh-pages` branch
+      - name: Deploy to GitHub Pages
+        run: |
+          git init
+          git remote add origin https://github.com/${{ github.repository }}.git
+          git checkout -b gh-pages
+          cp -r out/* .
+          git add --all
+          git commit -m "Deploy Next.js site to GitHub Pages"
+          git push --force origin gh-pages
