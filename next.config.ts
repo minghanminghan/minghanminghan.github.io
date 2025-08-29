@@ -11,7 +11,6 @@ const nextConfig: NextConfig = {
   distDir: "out",
   images: { unoptimized: true },
   basePath: isProd ? `/${repoName}` : "",
-  assetPrefix: isProd ? `/${repoName}/` : "",
 };
 
 export default nextConfig;
