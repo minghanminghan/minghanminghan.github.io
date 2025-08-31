@@ -30,7 +30,7 @@ export default function Work() {
                     desc: 'Internship app that renders observed activity from up to 128 neurons',
                     stack: 'React',
                     libs: 'd3, NumPy',
-                    source: '',
+                    source: 'https://github.com/minghanminghan/data_display',
                 }}/>
                 <Project info={{
                     name: 'AIMLearn',

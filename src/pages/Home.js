@@ -3,11 +3,18 @@ import NavBar from '../components/NavBar';
 
 export default function Home() {
 
+  let headshot_src;
+  if (Date.now() % 2 === 0) {
+    headshot_src = "headshot2.jpg";
+  } else {
+    headshot_src = "headshot1.jpg";
+  }
+
   return (
     <div>
         <NavBar />
         <div className="main">
-          <img src="headshot2.jpg" alt="Andrew headshot" id="headshot"></img>
+          <img src={headshot_src} alt="Andrew headshot" id="headshot"></img>
           <div className="mini">
             <h2>About Me</h2>
             <p className="content">
