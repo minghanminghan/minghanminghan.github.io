@@ -1,6 +1,9 @@
 {
   "name": "minghanminghan.github.io",
   "version": "0.1.0",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "homepage": "https://minghanminghan.github.io",
   "private": true,
   "scripts": {

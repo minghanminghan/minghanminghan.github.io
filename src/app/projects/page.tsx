@@ -2,7 +2,7 @@
 
 import StackUI from "@/components/StackUI"
 import { useViewContext } from "../../context/ViewContext"
-import { Projects } from '@/constants/projects'
+import { Projects } from '@/constants/projectList'
 import { Box, Link, Typography } from "@mui/material"
 
 export default function Page() {
