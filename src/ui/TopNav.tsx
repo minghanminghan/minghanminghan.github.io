@@ -1,6 +1,7 @@
 'use client'
 
-import { Views, useViewContext } from '../context/ViewContext'
+import { routes } from '@/constants/routes'
+import { useViewContext } from '../context/ViewContext'
 import { Box, Typography, Link, Paper } from '@mui/material'
 import Header from './Header'
 
@@ -8,26 +9,22 @@ export default function TopNav() {
     const { active } = useViewContext()
     
     return (
-    <Paper
-        sx={{
-            paddingX: 5,
-            paddingY: 2,
-        }}
-    >
+    <Paper>
     <Box
+        width='100%'
         display='flex'
         flexDirection='row'
-        gap={125}
+        paddingY='2vh'
+        gap='58vw'
         justifyContent='center'
     >
         <Header/>
         <Box
-            gap={5}
+            gap='2vw'
             display='flex'
             flexDirection='row'
-            // alignItems='center'
         >
-            {Views.map((v, i) =>
+            {routes.map((v, i) =>
                 <Link
                     href={`/${v.toLowerCase()}`}
                     key={i}

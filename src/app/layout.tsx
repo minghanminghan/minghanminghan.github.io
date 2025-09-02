@@ -2,7 +2,7 @@ import TopNav from "../ui/TopNav"
 import { ThemeProvider } from "@mui/material/styles"
 import { ViewProvider } from "../context/ViewContext"
 import theme from "../context/ThemeContext"
-import { CssBaseline } from "@mui/material"
+import { Box, CssBaseline } from "@mui/material"
 
 export default function RootLayout({
   children,
@@ -16,7 +16,12 @@ export default function RootLayout({
         <ThemeProvider theme={theme}>
           <CssBaseline/>
           <TopNav />
-          {children}
+          <Box
+            paddingX='2vw'
+            paddingY='2vh'
+          >
+            {children}
+          </Box>
         </ThemeProvider>
         </ViewProvider>
       </body>

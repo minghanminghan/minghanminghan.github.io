@@ -27,6 +27,16 @@ const theme = createTheme({
             // fontWeight: 'bold',
         },
     },
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 500,
+            md: 800,
+            lg: 1200,
+            xl: 1600,
+
+        }
+    },
     components: {
         MuiButton: {
             defaultProps: {

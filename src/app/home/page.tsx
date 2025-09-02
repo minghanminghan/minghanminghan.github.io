@@ -5,6 +5,7 @@ import { useViewContext } from "../../context/ViewContext"
 import Image from "next/image"
 import StackUI from "@/components/StackUI"
 import { useState } from "react"
+import Link from "next/link"
 
 export default function Page() {
     const { setActive } = useViewContext()
@@ -14,7 +15,6 @@ export default function Page() {
 
     return(
     <Box
-        p={3}
         width='100%'
         display='flex'
         alignItems='center'
@@ -30,8 +30,10 @@ export default function Page() {
             </Typography>
         </Box>
         <StackUI>
-            <Box
-                marginLeft={29}
+            <Box 
+                width='fit-content'
+                marginLeft='15vw'
+                sx={{ cursor: 'pointer' }}
             >
                 <Image
                     src={`/headshot${srcNumber}.jpg`}
@@ -45,13 +47,13 @@ export default function Page() {
                 Hi! I&#39;m Andrew, a software engineer based in NYC.
             </Typography>
             <Typography>
-                I&#39;m a senior at NYU studying Computer Science, Mathematics, and Psychology.
+                I&#39;m a senior at NYU studying Computer Science, Math, and Psychology.
             </Typography>
             <Typography>
                 I recently interned at Disney as a Software Engineer, where I built AI solutions for the Customer Service Tooling team.
             </Typography>
             <Typography>
-                I&#39;m experienced in working with web apps and technologies through internship, hackathon, and project experiences.
+                I&#39;m experienced in working with web apps and technologies through various <Link href='/projects'>project</Link> experiences.
             </Typography>
             <Typography>
                 I&#39;m passionate about machine learning, and have been building out deep learning and agentic systems in my free time.

@@ -1,20 +1,17 @@
 'use client'
 
 import { createContext, useState, useContext, ReactNode } from 'react'
-
-export const Views = ['Home', 'Projects', 'Resume'] as const
-
-export type ViewOptions = typeof Views[number]
+import { routeOptions } from '@/constants/routes'
 
 interface ViewContextType {
-  active: ViewOptions
-  setActive: (newView: ViewOptions) => void
+  active: routeOptions
+  setActive: (newView: routeOptions) => void
 }
 
 const ViewContext = createContext<ViewContextType | null>(null)
 
 export function ViewProvider ({ children }: { children: ReactNode }) {
-  const [active, setActive] = useState<ViewOptions>('Home')
+  const [active, setActive] = useState<routeOptions>('Home')
 
   return (
     <ViewContext.Provider value={{ active, setActive }}>

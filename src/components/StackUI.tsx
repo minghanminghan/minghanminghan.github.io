@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, ReactNode } from "react";
-import { Box, Paper, IconButton } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
+import Image from "next/image";
 
 import {
   DndContext,
@@ -51,14 +52,12 @@ export default function StackUI({ children, onOrderChange, className }: StackUIP
   }
 
   return (
-    <Box className={className} sx={{ px: 2, py: 4 }}>
-      <Paper
-        elevation={0}
-        sx={{
-          maxWidth: 1200,
-          bgcolor: "transparent",
-        }}
-      >
+    <Box
+      className={className}
+      width='100vw'
+      paddingX='23vw'
+      paddingY={4}
+    >
         <DndContext
           sensors={sensors}
           collisionDetection={closestCenter}
@@ -98,7 +97,6 @@ export default function StackUI({ children, onOrderChange, className }: StackUIP
             ) : null}
           </DragOverlay>
         </DndContext>
-      </Paper>
     </Box>
   );
 }
@@ -123,7 +121,7 @@ function SortableBlock({ id, children }: { id: number; children: ReactNode }) {
         alignItems: "center",
         width: "100%",
         position: "relative",
-        opacity: isDragging ? 0.4 : 1, // keep placeholder, but faded
+        opacity: isDragging ? 0.4 : 1,
         ":hover .drag-handle": { opacity: 1 },
       }}
     >
@@ -144,7 +142,7 @@ function SortableBlock({ id, children }: { id: number; children: ReactNode }) {
           <DragIndicatorIcon />
         </IconButton>
       </Box>
-      <Box sx={{ flex: 1 }}>{children}</Box>
+      {children}
     </Box>
   );
 }

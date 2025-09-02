@@ -3,10 +3,22 @@ export type Project = {
     description: string
     source: string
     website?: string
-    _blank?: boolean     // true: open website in a new tab when clicked
+    _blank?: boolean     // true: open website in new tab on click
 }
 
 export const Projects: Project[] = [
+    {
+        name: 'Deep learning chess bot',
+        description: 'Chess bot using neural networks without search. Inspired by Leela Chess Zero',
+        source: 'https://github.com/minghanminghan/chess-bot'
+    },
+    {
+        name: 'Agentic browser assistant',
+        description: 'LLM assistant browser extension with web search and provider customization',
+        source: 'https://github.com/minghanminghan/browser-agent',
+        // website: '', // TODO: add chrome web store link here
+        // _blank: true   
+    },
     {
         name: 'Hands-on data exploration tool',
         description: 'Uses hand movements to view and control data (toggle series, rescale time series, make annotations)',

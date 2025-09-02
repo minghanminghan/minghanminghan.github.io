@@ -2,7 +2,7 @@
 
 import StackUI from "@/components/StackUI"
 import { useViewContext } from "../../context/ViewContext"
-import { Projects } from '@/constants/Projects'
+import { Projects } from '@/constants/projects'
 import { Box, Link, Typography } from "@mui/material"
 
 export default function Page() {
@@ -11,7 +11,6 @@ export default function Page() {
     
     return (
     <Box
-        p={3}
         width='100%'
         display='flex'
         alignItems='center'
