@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>ASCII Webcam</title>
+  <style>
+    :root {
+      --ascii-font-size: 12px;
+    }
+    body {
+      background: #000;
+      color: #fff;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-family: monospace;
+    }
+    form {
+        margin-top: 10px;
+    }
+    label {
+        color: #fff;
+    }
+    #ascii-container {
+      resize: both;
+      overflow: auto;
+      border: 1px solid #555;
+      width: 1000px;
+      height: 1000px;
+      max-width: 90vw;
+      max-height: 90vh;
+      box-sizing: border-box;
+      padding: 0;
+    }
+    pre#ascii {
+      margin: 0;
+      white-space: pre;
+      tab-size: 4;
+      font-size: var(--ascii-font-size);
+      line-height: 1em;
+      letter-spacing: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <form id="ramp-form">
+    <label for="chars">ASCII Ramp (dark → light): </label>
+    <input type="text" id="chars" value="@%#*+=-:. " size="40" />
+  </form>
+
+  <div id="ascii-container">
+    <pre id="ascii"></pre>
+  </div>
+
+  <script>
+    const asciiEl = document.getElementById("ascii");
+    const container = document.getElementById("ascii-container");
+    const rampInput = document.getElementById("chars");
+
+    const video = document.createElement("video");
+    video.playsInline = true; video.muted = true; video.autoplay = true;
+    const off = document.createElement("canvas");
+    const ctx = off.getContext("2d", { willReadFrequently: true });
+
+    let ASCII_CHARS = rampInput.value;
+    rampInput.addEventListener("input", () => {
+      ASCII_CHARS = rampInput.value || " ";
+    });
+
+    let charWidth = 0, charHeight = 0;
+    function measureCharMetrics() {
+      const sample = document.createElement("span");
+      sample.style.visibility = "hidden";
+      sample.style.whiteSpace = "pre";
+      sample.textContent = "M".repeat(100);
+      asciiEl.appendChild(sample);
+      const rect = sample.getBoundingClientRect();
+      charWidth = rect.width / 100;
+
+      const cs = getComputedStyle(asciiEl);
+      charHeight = parseFloat(cs.lineHeight);
+
+      asciiEl.removeChild(sample);
+      if (!charWidth || !isFinite(charWidth)) charWidth = 8;
+      if (!charHeight || !isFinite(charHeight)) charHeight = parseFloat(cs.fontSize);
+    }
+
+    function computeGrid() {
+      const cols = Math.max(1, Math.floor(container.clientWidth  / charWidth));
+      const rows = Math.max(1, Math.floor(container.clientHeight / charHeight));
+      return { cols, rows };
+    }
+
+    function brightness(r, g, b) {
+      return 0.299 * r + 0.587 * g + 0.114 * b;
+    }
+
+    function renderLoop() {
+      const { cols, rows } = computeGrid();
+      if (!cols || !rows || video.readyState < 2) {
+        requestAnimationFrame(renderLoop);
+        return;
+      }
+
+      off.width = cols;
+      off.height = rows;
+
+      ctx.save();
+      ctx.translate(off.width, 0);
+      ctx.scale(-1, 1);
+      ctx.drawImage(video, 0, 0, off.width, off.height);
+      ctx.restore();
+
+      const { data } = ctx.getImageData(0, 0, off.width, off.height);
+
+      let out = "";
+      const len = ASCII_CHARS.length - 1 || 1;
+      for (let y = 0; y < rows; y++) {
+        let line = "";
+        for (let x = 0; x < cols; x++) {
+          const i = (y * cols + x) * 4;
+          const r = data[i], g = data[i + 1], b = data[i + 2];
+          const v = brightness(r, g, b);
+          const idx = Math.max(0, Math.min(len, Math.floor((v / 255) * len)));
+          line += ASCII_CHARS[idx] || " ";
+        }
+        out += line + "\n";
+      }
+      asciiEl.textContent = out;
+
+      requestAnimationFrame(renderLoop);
+    }
+
+    async function start() {
+      measureCharMetrics();
+      window.addEventListener("resize", measureCharMetrics);
+
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      video.srcObject = stream;
+      await video.play();
+      requestAnimationFrame(renderLoop);
+    }
+
+    start().catch(err => {
+      asciiEl.textContent = "Camera error: " + err.message;
+    });
+  </script>
+</body>
+</html>

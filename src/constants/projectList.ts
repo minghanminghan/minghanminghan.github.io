@@ -33,7 +33,7 @@ export const Projects: Project[] = [
         name: 'Ascii Art',
         description: 'Simple visualization that converts video stream into ascii art, with a user-customizable ascii ramp',
         source: 'https://github.com/minghanminghan/ascii-art',
-        website: '/ascii-art',
+        website: '/projects/ascii-art',
         _blank: false,
     },
     {
