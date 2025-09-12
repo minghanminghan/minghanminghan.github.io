@@ -8,6 +8,11 @@ export type Project = {
 
 export const Projects: Project[] = [
     {
+        name: 'Algorithmic Stock Trader',
+        description: 'Trading bot that uses LSTM forecasting to trader over the S&P 100 with Alpaca Markets API',
+        source: 'https://github.com/minghanminghan/stock-trader',
+    },
+    {
         name: 'Deep learning chess bot',
         description: 'Chess bot using neural networks without search. Inspired by Leela Chess Zero',
         source: 'https://github.com/minghanminghan/chess-bot'
