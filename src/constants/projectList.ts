@@ -8,6 +8,11 @@ export type Project = {
 
 export const Projects: Project[] = [
     {
+        name: 'AI End-to-End Coding Agent',
+        description: 'AI agent that takes autonomously resolves GitHub Issues',
+        source: 'https://github.com/minghanminghan/coding-agent'
+    },
+    {
         name: 'Algorithmic Stock Trader',
         description: 'Trading bot that uses LSTM forecasting to trader over the S&P 100 with Alpaca Markets API',
         source: 'https://github.com/minghanminghan/stock-trader',
