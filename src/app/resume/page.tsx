@@ -6,5 +6,5 @@ import { useViewContext } from "../../context/ViewContext"
 export default function Page() {
     const { setActive } = useViewContext()
     setActive('Resume')
-    redirect('/Andrew_Jiang_Resume.pdf')
+    redirect('https://docs.google.com/document/d/1Vh0rQwhL9VdwooimxvWiWOwfLQpsSa9KLT_xrYmZ_dU/edit?tab=t.0', )
 }
