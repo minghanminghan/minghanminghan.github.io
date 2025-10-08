@@ -27,7 +27,7 @@ export const Projects: Project[] = [
         description: 'LLM assistant browser extension with web search and provider customization',
         source: 'https://github.com/minghanminghan/browser-agent',
         // website: '', // TODO: add chrome web store link here
-        // _blank: true   
+        // _blank: true
     },
     {
         name: 'Hands-on data exploration tool',
@@ -40,7 +40,7 @@ export const Projects: Project[] = [
         source: 'https://github.com/minghanminghan/tiktok-techjam-2024',
     },
     {
-        name: 'Ascii Art',
+        name: 'Ascii art',
         description: 'Simple visualization that converts video stream into ascii art, with a user-customizable ascii ramp',
         source: 'https://github.com/minghanminghan/ascii-art',
         website: '/projects/ascii-art',

@@ -17,8 +17,10 @@ export default function RootLayout({
           <CssBaseline/>
           <TopNav />
           <Box
-            paddingX='2vw'
-            paddingY='2vh'
+            sx={{
+              px: { xs: 2, sm: 3, md: 4 },
+              py: { xs: 2, sm: 3 }
+            }}
           >
             {children}
           </Box>

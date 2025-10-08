@@ -6,12 +6,17 @@ import Image from "next/image"
 import StackUI from "@/components/StackUI"
 import { useState } from "react"
 import Link from "next/link"
+import { SELF_INTRO } from "@/constants/home"
 
 export default function Page() {
     const { setActive } = useViewContext()
     setActive('Home')
 
     const [srcNumber, setSrcNumber] = useState(0)
+    const INTRO = SELF_INTRO.map((v, i) => 
+    <Typography sx={{ maxWidth: '100%', mx: 'auto' }}>
+        {v}
+    </Typography>)
 
     return(
     <Box
@@ -30,10 +35,12 @@ export default function Page() {
             </Typography>
         </Box>
         <StackUI>
-            <Box 
-                width='fit-content'
-                marginLeft='15vw'
-                sx={{ cursor: 'pointer' }}
+            <Box
+                sx={{
+                    width: 'fit-content',
+                    cursor: 'pointer',
+                    mx: 'auto'
+                }}
             >
                 <Image
                     src={`/headshot${srcNumber}.jpg`}
@@ -43,24 +50,7 @@ export default function Page() {
                     onClick={() => setSrcNumber((srcNumber + 1) % 2)}
                 />
             </Box>
-            <Typography>
-                Hi! I&#39;m Andrew, a software engineer based in NYC.
-            </Typography>
-            <Typography>
-                I&#39;m a senior at NYU studying Computer Science, Math, and Psychology.
-            </Typography>
-            <Typography>
-                I recently interned at Disney as a Software Engineer, where I built AI solutions for the Customer Service Tooling team.
-            </Typography>
-            <Typography>
-                I&#39;m experienced in working with web apps and technologies through various <Link href='/projects'>project</Link> experiences.
-            </Typography>
-            <Typography>
-                I&#39;m passionate about machine learning, and have been building out deep learning and agentic systems in my free time.
-            </Typography>
-            <Typography>
-                I&#39;m always excited to learn, collaborate, and build- feel free to reach out and contact me!
-            </Typography>
+            {INTRO}
         </StackUI>
     </Box>
     )

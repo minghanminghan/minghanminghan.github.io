@@ -11,27 +11,37 @@ export default function TopNav() {
     return (
     <Paper>
     <Box
-        width='100%'
-        display='flex'
-        flexDirection='row'
-        paddingY='2vh'
-        gap='58vw'
-        justifyContent='center'
+        sx={{
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            py: 2,
+            px: { xs: 2, sm: 3, md: 4 },
+            overflow: 'hidden'
+        }}
     >
         <Header/>
         <Box
-            gap='2vw'
-            display='flex'
-            flexDirection='row'
+            sx={{
+                gap: { xs: 1, sm: 2, md: 3 },
+                display: 'flex',
+                flexDirection: 'row',
+                flexShrink: 0
+            }}
         >
             {routes.map((v, i) =>
                 <Link
                     href={`/${v.toLowerCase()}`}
                     key={i}
                 >
-                <Typography 
+                <Typography
                     variant="h2"
-                    sx={{ textDecoration: v === active ? 'underline' : 'none' }}
+                    sx={{
+                        textDecoration: v === active ? 'underline' : 'none',
+                        fontSize: { xs: '1rem', sm: '1rem', md: '1rem' }
+                    }}
                 >
                     {v}
                 </Typography>
