@@ -11,6 +11,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      {/* <body style={{ cursor: 'none' }}> */}
       <body>
         <ViewProvider>
         <ThemeProvider theme={theme}>

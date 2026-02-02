@@ -8,18 +8,13 @@ export type Project = {
 
 export const Projects: Project[] = [
     {
-        name: 'AI End-to-End Coding Agent',
-        description: 'AI agent that takes autonomously resolves GitHub Issues',
-        source: 'https://github.com/minghanminghan/coding-agent'
-    },
-    {
-        name: 'Algorithmic Stock Trader',
-        description: 'Trading bot that uses LSTM forecasting to trader over the S&P 100 with Alpaca Markets API',
+        name: 'Algorithmic stock trader',
+        description: 'Swing trader that uses LSTM forecasting to trade over the S&P 100',
         source: 'https://github.com/minghanminghan/stock-trader',
     },
     {
         name: 'Deep learning chess bot',
-        description: 'Chess bot using neural networks without search. Inspired by Leela Chess Zero',
+        description: 'Chess bot using neural networks without search inspired by Leela Chess Zero',
         source: 'https://github.com/minghanminghan/chess-bot'
     },
     {
@@ -36,19 +31,19 @@ export const Projects: Project[] = [
     },
     {
         name: 'Harmonize',
-        description: 'Spotify music discovery app',
+        description: 'Music discovery app',
         source: 'https://github.com/minghanminghan/tiktok-techjam-2024',
     },
     {
-        name: 'Ascii art',
-        description: 'Simple visualization that converts video stream into ascii art, with a user-customizable ascii ramp',
+        name: 'Ascii Art',
+        description: 'Video stream into ascii visualization',
         source: 'https://github.com/minghanminghan/ascii-art',
         website: '/projects/ascii-art',
         _blank: false,
     },
     {
         name: 'minghanminghan.github.io',
-        description: 'Personal website built with Next JS and MUI',
+        description: '',
         source: 'https://github.com/minghanminghan/minghanminghan.github.io',
         website: '/home',
         _blank: false,
