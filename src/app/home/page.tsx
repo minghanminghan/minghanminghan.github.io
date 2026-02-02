@@ -14,7 +14,7 @@ export default function Page() {
 
     const [srcNumber, setSrcNumber] = useState(0)
     const INTRO = SELF_INTRO.map((v, i) => 
-    <Typography sx={{ maxWidth: '100%', mx: 'auto' }}>
+    <Typography key={i} sx={{ maxWidth: '100%', mx: 'auto' }}>
         {v}
     </Typography>)
 
