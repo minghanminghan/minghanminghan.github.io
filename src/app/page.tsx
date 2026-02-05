@@ -11,16 +11,16 @@ export default function Home() {
   
 
   return (
-    <div className={`flex flex-row gap-25 px-60 pt-10 ${outline ? "outline-1" : ""}`}>
-      <div className={`w-auto h-full flex flex-col gap-10 ${outline ? "outline-1" : ""}`}>
-        <Link href="/" className="w-fit text-5xl font-bold hover:underline">
+    <div className={`flex flex-col md:flex-row gap-10 md:gap-25 px-6 md:px-60 pt-10 ${outline ? "outline-1" : ""}`}>
+      <div className={`w-auto h-full flex flex-col gap-6 md:gap-10 ${outline ? "outline-1" : ""}`}>
+        <Link href="/" className="w-fit text-3xl md:text-5xl font-bold hover:underline">
           Andrew<br/>
           Minghan<br/>
           Jiang<br/>
           .com
           <br/>
         </Link>
-        <ul className="w-fit list-none text-2xl flex flex-col gap-5">
+        <ul className="w-fit list-none text-lg md:text-2xl flex flex-col gap-3 md:gap-5">
           <Link href="https://github.com/minghanminghan/" target="_blank" className="hover:underline">
             GitHub
           </Link>
@@ -36,15 +36,15 @@ export default function Home() {
         </ul>
         <div
           onClick={toggleTheme}
-          className={`mt-65 w-fit cursor-pointer text-lg text-center hover:underline ${outline ? "outline-1" : ""}`}
+          className={`mt-4 md:mt-65 w-fit cursor-pointer text-lg text-center hover:underline ${outline ? "outline-1" : ""}`}
         >
           <Eyes/>
           <p>Click me!</p>
         </div>
       </div>
-      <div className={`w-full h-auto text-2xl flex flex-col gap-10 ${outline ? "outline-1" : ""}`}>
-        <div className="w-full h-auto flex flex-row gap-25">
-          <Image src="./headshot0.jpg" alt="headshot" width={400} height={400} className="rounded-lg"/>
+      <div className={`w-full h-auto text-lg md:text-2xl flex flex-col gap-6 md:gap-10 ${outline ? "outline-1" : ""}`}>
+        <div className="w-full h-auto flex flex-col md:flex-row gap-6 md:gap-25">
+          <Image src="./headshot0.jpg" alt="headshot" width={400} height={400} className="rounded-lg w-48 h-48 md:w-[400px] md:h-[400px]"/>
           <div className="justify-center flex flex-col gap-4">
             <p>Hi! I&apos;m Andrew, an NYU senior majoring in
               <ul className="list-disc list-inside ml-5">
@@ -63,7 +63,7 @@ export default function Home() {
             <p>Feel free to reach out!</p>
           </div>
         </div>
-        <div className={`mx-10 flex flex-col gap-8 ${outline ? "outline-1" : ""}`}>
+        <div className={`mx-0 md:mx-10 flex flex-col gap-4 md:gap-8 ${outline ? "outline-1" : ""}`}>
           <b>Projects</b>
           <p>
             <Link href="https://github.com/minghanminghan/chess-bot" target="_blank" className="hover:underline">
