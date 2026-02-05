@@ -1,8 +1,5 @@
-import TopNav from "../ui/TopNav"
-import { ThemeProvider } from "@mui/material/styles"
-import { ViewProvider } from "../context/ViewContext"
-import theme from "../context/ThemeContext"
-import { Box, CssBaseline } from "@mui/material"
+import "./globals.css"
+import { ThemeProvider } from "./context/ThemeContext"
 
 export default function RootLayout({
   children,
@@ -10,23 +7,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      {/* <body style={{ cursor: 'none' }}> */}
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <ViewProvider>
-        <ThemeProvider theme={theme}>
-          <CssBaseline/>
-          <TopNav />
-          <Box
-            sx={{
-              px: { xs: 2, sm: 3, md: 4 },
-              py: { xs: 2, sm: 3 }
-            }}
-          >
-            {children}
-          </Box>
+        <ThemeProvider>
+          {children}
         </ThemeProvider>
-        </ViewProvider>
       </body>
     </html>
   )
