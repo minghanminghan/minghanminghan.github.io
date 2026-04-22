@@ -1,22 +1,6 @@
 TODO:
-- add favicon.ico
-- add links to self intro
-  - internship, hackathon, and project experiences: projects page (maybe add internship projects)
-  - deep learning: chess bot
-  - agentic: browser assistant
-
-- add links to projects:
-  - chess bot repo
-  - browser assistant repo
-
-- make font size conditional on viewport (vary for phone, ipad, laptop, monitor)
-- ask chat to produce a clean, efficient solution for image alignment in SortableBlock (StackUI)
-
-- browser assistant
-  - features
-    - bring chat to browser: open chat interface on websites
-    - continue.dev as a browser extension
-    - highlight text and ask questions about it
-    - pass context from other documents
-  - design
-    - switches for deep thinking, web search
+- color palette (include dark mode)
+- project demos
+  - slm: load model checkpoint, show ephemeral chat interface
+  - gh issue bot: bring your own key, create simple interface to demo harness with simple logging
+  - chess bot: load model checkpoint, play a game vs bot

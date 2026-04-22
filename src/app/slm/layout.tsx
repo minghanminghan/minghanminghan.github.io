@@ -1,6 +1,6 @@
-import "./globals.css"
+import "../globals.css"
 import { Figtree } from "next/font/google"
-import { ThemeProvider } from "./context/ThemeContext"
+import { ThemeProvider } from "../context/ThemeContext"
 
 const figtree = Figtree({
   subsets: ["latin"],

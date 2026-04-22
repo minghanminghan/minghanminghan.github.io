@@ -14,3 +14,7 @@ body {
   color: var(--foreground);
   background: var(--background);
 }
+
+.hover\:underline:hover {
+  text-decoration: underline;
+}
