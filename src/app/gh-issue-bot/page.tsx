@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { RequestBody } from "@/app/api/gh-issue-bot/route";
 
+// TODO: add a "use my slm model!" button here
 
 export default function GH_Issue_Bot() {
 	const [formOpen, setFormOpen] = useState(true)

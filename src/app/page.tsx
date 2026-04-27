@@ -81,10 +81,10 @@ const slides: Slide[] = [
           <u><Link href='/slm'>try it out!</Link></u>
           &emsp; <u><Link target='_blank' href='https://github.com/minghanminghan/slm'>code</Link></u>
         </span>
-        <video className="w-300 h-150 outline">
+        {/* <video className="w-300 h-150 outline">
           <source src="slm-demo.mp4" type="video/mp4"/>
           video demo placeholder
-        </video>
+        </video> */}
       </div>
   },
   {
@@ -93,10 +93,10 @@ const slides: Slide[] = [
       <div className="flex flex-col md:flex-col gap-4">
         <p>SSH into any terminal from any browser (recommended to use tailscale & tmux for optimal vibe coding)</p>
         <u><Link target='_blank' href='https://github.com/minghanminghan/mobile-terminal'>code</Link></u>
-        <video className="w-300 h-150 outline">
+        {/* <video className="w-300 h-150 outline">
           <source src="mobile-terminal-demo.mp4" type="video/mp4"/>
           video demo placeholder
-        </video>
+        </video> */}
       </div>
   },
   {
