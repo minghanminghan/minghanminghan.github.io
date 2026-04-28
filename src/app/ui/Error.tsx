@@ -7,7 +7,7 @@ export default function Error() {
 
     return (
         <div className="w-full h-screen flex flex-col gap-4 text-center items-center justify-center">
-            <p>Not yet implemented. Sorry!</p>
+            <p>Not implemented yet. Sorry!</p>
             <button className="rounded outline p-2 cursor-pointer" onClick={() => router.back()}>Back</button>
         </div>
     )

@@ -63,5 +63,5 @@ export default function Eyes() {
         return () => window.removeEventListener('mousemove', handleMouseMove)
     }, [theme])
 
-    return <canvas ref={canvasRef} className="h-25 w-25" />
+    return <canvas ref={canvasRef} className="h-full w-full" />
 }

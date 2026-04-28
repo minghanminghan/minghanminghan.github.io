@@ -1,11 +1,5 @@
-import "../globals.css"
-import { Figtree } from "next/font/google"
-import { ThemeProvider } from "../context/ThemeContext"
+// this layout.tsx does nothing for now
 
-const figtree = Figtree({
-  subsets: ["latin"],
-  fallback: ["system-ui", "sans-serif"],
-})
 
 export default function RootLayout({
   children,
@@ -13,12 +7,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={figtree.className}>
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+    <>
+      {children}
+    </>
   )
 }

@@ -118,9 +118,9 @@ export default function Chess_Bot() {
 			<h1 className="text-2xl font-bold text-center">Chess Bot</h1>
 
 			{/* main layout: board left, panel right */}
-			<div className="flex gap-6 items-start">
+			<div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
 				{/* board */}
-				<div className="flex-1 min-w-0 max-w-1/2">
+				<div className="w-[80vw] md:w-auto md:flex-1 md:min-w-0 md:max-w-1/2">
 					<Chessboard options={{
 						position: fen,
 						onPieceDrop,
@@ -133,7 +133,7 @@ export default function Chess_Bot() {
 				</div>
 
 				{/* right panel */}
-				<div className="w-72 flex flex-col gap-4 shrink-0">
+				<div className="w-[80vw] flex flex-col gap-4 md:w-72 md:shrink-0">
 					{/* loading/error message */}
 					<div className="h-6 mb-1 text-center text-sm text-gray-500">
 						{thinking ? "Bot thinking..." : error ? <span className="text-red-500">{error}</span> : null}

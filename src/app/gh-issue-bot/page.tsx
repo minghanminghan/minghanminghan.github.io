@@ -48,9 +48,9 @@ export default function GH_Issue_Bot() {
 
 	return (
 		// horizontal parent wrapper
-		<div className="mx-[20vw] mt-[5vh] w-auto h-full flex flex-col gap-4 md:gap-4">
+		<div className="my-5 flex-1 md:max-w-[60vw] mx-auto h-full flex flex-col items-center justify-center gap-4">
 			{/* title */}
-			<div className="flex flex-col items-center justify-center">
+			<div className="w-full flex flex-col items-center justify-center">
 				<h1 className="text-2xl font-bold">Github Issue Bot</h1>
 				<Link target="_blank" href="https://github.com/minghanminghan/gh-issue-to-pr">
 					<u>code</u>
@@ -58,7 +58,7 @@ export default function GH_Issue_Bot() {
 			</div>
 
 			{/* form: api key, endpoint, issue */}
-			<div className="border rounded">
+			<div className="w-full border rounded">
 				<button
 					className="w-full flex justify-between items-center px-4 py-2 font-semibold cursor-pointer"
 					onClick={() => setFormOpen(o => !o)}
@@ -116,7 +116,7 @@ export default function GH_Issue_Bot() {
 				</div>
 
 			{/* messages */}
-			<div className="border rounded">
+			<div className="w-full border rounded">
 				<button
 					className="w-full flex justify-between items-center px-4 py-2 font-semibold cursor-pointer"
 					onClick={() => setMsgsOpen(o => !o)}
@@ -125,7 +125,7 @@ export default function GH_Issue_Bot() {
 					<span>{msgsOpen ? '▲' : '▼'}</span>
 				</button>
 				{msgsOpen && (
-					<ul className="px-4 pb-4 flex flex-col gap-1 font-mono text-sm">
+					<ul className="px-4 pb-4 flex flex-col gap-1 font-mono text-sm max-h-96 overflow-y-auto">
 						{messages.length === 0
 							? <li className="text-gray-400">No messages yet.</li>
 							: messages.map((m, i) => <li key={i}>&gt; {m}</li>)
