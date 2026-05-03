@@ -3,5 +3,8 @@ export async function register() {
   if (proxyUrl) {
     const { ProxyAgent, setGlobalDispatcher } = await import("undici")
     setGlobalDispatcher(new ProxyAgent(proxyUrl))
+    console.log(`[instrumentation] Tailscale proxy active: ${proxyUrl}`)
+  } else {
+    console.warn("[instrumentation] TAILSCALE_PROXY_URL not set — outbound requests use direct routing")
   }
 }
