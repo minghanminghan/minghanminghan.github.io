@@ -8,11 +8,17 @@ export async function POST(req: NextRequest) {
 
   const body = await req.json()
 
-  const upstream = await fetch(`${serviceUrl}/api/v1/chat`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  })
+  let upstream: Response
+  try {
+    upstream = await fetch(`${serviceUrl}/api/v1/chat`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    })
+  } catch (err) {
+    console.error("[slm] fetch failed:", err)
+    return new Response(`Upstream unreachable: ${err}`, { status: 502 })
+  }
 
   return new Response(upstream.body, {
     status: upstream.status,

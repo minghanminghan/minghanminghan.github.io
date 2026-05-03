@@ -62,7 +62,7 @@ export default function SLM() {
               const copy = [...prev]
               copy[copy.length - 1] = {
                 role: "assistant",
-                content: copy[copy.length - 1].content + token,
+                content: copy[copy.length - 1].content + token + " ",
               }
               return copy
             })
