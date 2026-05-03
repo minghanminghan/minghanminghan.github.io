@@ -8,8 +8,6 @@ RUN npm run build
 FROM node:22-alpine AS runner
 WORKDIR /app
 
-RUN apk add --no-cache tailscale
-
 ENV NODE_ENV=production
 
 COPY --from=builder /app/node_modules ./node_modules
@@ -18,8 +16,5 @@ COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/next.config.ts ./
 
-COPY entrypoint.sh ./
-RUN chmod +x entrypoint.sh
-
 EXPOSE 3000
-ENTRYPOINT ["./entrypoint.sh"]
+CMD ["npm", "start"]
