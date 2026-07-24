@@ -9,20 +9,20 @@ export default function SideBar() {
   const { toggleTheme } = useTheme()
 
   return ( // side bar vertical container: headshot, name, links, dark mode
-  <div className="w-full md:w-fit shrink-0 h-fit flex flex-col items-center justify-center md:items-start md:justify-start gap-6 md:gap-10">
+  <div className="w-full md:w-fit shrink-0 h-fit flex flex-col items-center justify-center text-center gap-6 md:gap-10 border-2 border-white rounded-3xl bg-[var(--bubble-bg)] p-6 md:p-8">
     {/* mobile wrapper: inherit properties */}
-    <div className="items-center justify-center md:items-start md:justify-start flex md:flex-col gap-6 md:gap-10">
+    <div className="items-center justify-center flex md:flex-col gap-6 md:gap-10">
       <Link href="/">
           <Image src="./headshot0.jpg" alt="headshot" width={150} height={150} className="rounded-lg w-30 h-30 md:w-50 md:h-50"/>
       </Link>
-      <Link href="/" className="w-fit flex flex-col text-xl md:text-5xl font-bold hover:underline">
+      <Link href="/" className="w-fit flex flex-col items-center text-xl md:text-5xl font-bold hover:underline">
         <p>Andrew&nbsp;</p>
         <p>Minghan&nbsp;</p>
         <p>Jiang&nbsp;</p>
         <p>.com&nbsp;</p>
       </Link>
     </div>
-    <ul className="w-fit list-none text-lg md:text-2xl flex md:flex-col gap-3 md:gap-5">
+    <ul className="w-fit list-none text-lg md:text-2xl flex md:flex-col items-center gap-3 md:gap-5">
       <Link href="https://github.com/minghanminghan/" target="_blank" className="w-fit h-fit hover:underline">
         github
       </Link>

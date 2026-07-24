@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #f2e8d5;
   --foreground: #171717;
+  --bubble-bg: #faf1e0;
 }
 
 .dark {
-  --background: #111111;
+  --background: #2a2318;
   --foreground: #eeeeee;
+  --bubble-bg: #393127;
 }
 
 body {

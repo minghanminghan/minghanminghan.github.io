@@ -15,6 +15,7 @@
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.18",
     "chess.js": "^1.4.0",
+    "motion": "^12.42.2",
     "next": "^16.1.6",
     "postcss": "^8.5.6",
     "react": "19.1.0",
