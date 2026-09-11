@@ -9,20 +9,20 @@ export default function SideBar() {
   const { toggleTheme } = useTheme()
 
   return ( // side bar vertical container: headshot, name, links, dark mode
-  <div className="w-full md:w-fit shrink-0 h-fit flex flex-col items-center justify-center text-center gap-6 md:gap-10 border-2 border-white rounded-3xl bg-[var(--bubble-bg)] p-6 md:p-8">
+  <div className="w-full md:w-fit shrink-0 h-fit flex flex-col items-center justify-center text-center gap-6 md:gap-5 border-2 border-white rounded-3xl bg-[var(--bubble-bg)] p-6 md:p-6">
     {/* mobile wrapper: inherit properties */}
-    <div className="items-center justify-center flex md:flex-col gap-6 md:gap-10">
+    <div className="items-center justify-center flex md:flex-col gap-6 md:gap-5">
       <Link href="/">
-          <Image src="./headshot0.jpg" alt="headshot" width={150} height={150} className="rounded-lg w-30 h-30 md:w-50 md:h-50"/>
+          <Image src="./headshot0.jpg" alt="headshot" width={150} height={150} className="rounded-lg w-30 h-30 md:w-38 md:h-38"/>
       </Link>
-      <Link href="/" className="w-fit flex flex-col items-center text-xl md:text-5xl font-bold hover:underline">
+      <Link href="/" className="w-fit flex flex-col items-center text-xl md:text-4xl font-bold hover:underline">
         <p>Andrew&nbsp;</p>
         <p>Minghan&nbsp;</p>
         <p>Jiang&nbsp;</p>
         <p>.com&nbsp;</p>
       </Link>
     </div>
-    <ul className="w-fit list-none text-lg md:text-2xl flex md:flex-col items-center gap-3 md:gap-5">
+    <ul className="w-fit list-none text-lg md:text-xl flex md:flex-col items-center gap-3 md:gap-3">
       <Link href="https://github.com/minghanminghan/" target="_blank" className="w-fit h-fit hover:underline">
         github
       </Link>
@@ -40,7 +40,7 @@ export default function SideBar() {
       </Link>
     </ul>
     {/* eyes - fixed bottom-left on mobile, inline on desktop */}
-    <div onClick={toggleTheme} className="fixed bottom-6 left-10 cursor-pointer w-12 h-12 md:static md:w-25 md:h-25">
+    <div onClick={toggleTheme} className="fixed bottom-6 left-10 cursor-pointer w-12 h-12 md:static md:w-20 md:h-20">
       <Eyes/>
     </div>
   </div>

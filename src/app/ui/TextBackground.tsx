@@ -5,7 +5,7 @@ import { useAnimationFrame } from "motion/react"
 
 const CELL_W = 11
 const CELL_H = 20
-const TICK_SPEED = 10 // ticks/sec — how often clusters get a chance to re-randomize
+const TICK_SPEED = 90 // ticks/sec — how often clusters get a chance to re-randomize
 const TICK_INTERVAL = 1000 / TICK_SPEED
 const CURSOR_RADIUS = 120 // px — only clusters within this distance of the cursor re-randomize
 const REVERT_MIN = 2000 // ms — shortest time a triggered cluster stays randomized
