@@ -1,5 +1,6 @@
 'use client'
 
+import Link from "next/link"
 import { useState } from "react"
 
 
@@ -33,6 +34,9 @@ export default function Slideshow() {
           [&nbsp;<p className={`text-nowrap flex${i === active ? ' underline' : ''}`}>{v.name}</p>&nbsp;]
         </span>
       ))}
+      <Link href="/jev-demo" className="flex [&:hover_p]:underline">
+        [&nbsp;<p className="text-nowrap flex">jev-demo</p>&nbsp;]
+      </Link>
     </div>
 
     {/* desc & demo container */}
