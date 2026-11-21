@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boids</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; font-family: system-ui, sans-serif; }
+  canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+  #panel {
+    position: fixed; top: 12px; left: 12px; width: 230px; padding: 12px 14px;
+    background: rgba(15, 22, 45, .8); color: #dbe4ff; border: 1px solid #2a3669;
+    border-radius: 10px; backdrop-filter: blur(6px); font-size: 13px;
+  }
+  #panel label { display: flex; justify-content: space-between; margin-top: 8px; }
+  #panel output { color: #7fd1ff; font-variant-numeric: tabular-nums; }
+  #panel input[type=range] { width: 100%; margin: 2px 0 0; accent-color: #7fd1ff; }
+  #panel h1 { margin: 0 0 2px; font-size: 14px; letter-spacing: .05em; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="panel">
+  <h1>BOIDS</h1>
+  <div id="bars"></div>
+</div>
+
+<script>
+const params = {
+  separation: { label: 'Separation',        min: 0, max: 3,   step: 0.05, value: 1.5 },
+  mouse:      { label: 'Mouse avoidance',   min: 0, max: 5,   step: 0.1,  value: 3 },
+  cohesion:   { label: 'Cohesion',          min: 0, max: 3,   step: 0.05, value: 1 },
+  alignment:  { label: 'Alignment',         min: 0, max: 3,   step: 0.05, value: 1.5 },
+  population: { label: 'Population',        min: 1, max: 600, step: 1,    value: 250 },
+};
+
+const bars = document.getElementById('bars');
+for (const [key, p] of Object.entries(params)) {
+  const wrap = document.createElement('div');
+  wrap.innerHTML = `<label>${p.label}<output></output></label>
+    <input type="range" min="${p.min}" max="${p.max}" step="${p.step}" value="${p.value}">`;
+  const input = wrap.querySelector('input'), out = wrap.querySelector('output');
+  const update = () => { p.value = +input.value; out.textContent = p.value; if (key === 'population') resize_pop(); };
+  input.addEventListener('input', update);
+  out.textContent = p.value;
+  bars.appendChild(wrap);
+}
+
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+let W, H, dpr;
+function resize() {
+  dpr = window.devicePixelRatio || 1;
+  W = window.innerWidth; H = window.innerHeight;
+  canvas.width = W * dpr; canvas.height = H * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+window.addEventListener('resize', resize);
+resize();
+
+const mouse = { x: 0, y: 0, active: false };
+canvas.addEventListener('pointermove', e => { mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true; });
+canvas.addEventListener('pointerdown', e => { mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true; });
+canvas.addEventListener('pointerleave', () => mouse.active = false);
+canvas.addEventListener('pointerup', e => { if (e.pointerType !== 'mouse') mouse.active = false; });
+
+const MAX_SPEED = 2.13, CRUISE_SPEED = 1.7, SPEED_SMOOTH = 0.08, MAX_FORCE = 0.04;
+const SIZE = 8; // square side in px; direction line scales with it
+const WANDER = 0.04;       // random push to turn rate per step, in radians
+const FORCE_SMOOTH = 0.15; // 0..1, lower = smoother steering
+const VISION = 60, SEP_DIST = 24, MOUSE_DIST = 130;
+
+const boids = [];
+function spawn() {
+  const a = Math.random() * Math.PI * 2;
+  return { x: Math.random() * W, y: Math.random() * H, vx: Math.cos(a) * 1.4, vy: Math.sin(a) * 1.4, sx: 0, sy: 0, turn: 0 };
+}
+function resize_pop() {
+  while (boids.length < params.population.value) boids.push(spawn());
+  boids.length = Math.min(boids.length, params.population.value);
+}
+resize_pop();
+
+// Turn a desired direction into a limited steering force.
+function steer(dx, dy, out, weight) {
+  const m = Math.hypot(dx, dy);
+  if (!m) return;
+  let sx = dx / m * MAX_SPEED - out.vx;
+  let sy = dy / m * MAX_SPEED - out.vy;
+  const sm = Math.hypot(sx, sy);
+  if (sm > MAX_FORCE) { sx *= MAX_FORCE / sm; sy *= MAX_FORCE / sm; }
+  out.ax += sx * weight; out.ay += sy * weight;
+}
+
+function step() {
+  const n = boids.length;
+  for (let i = 0; i < n; i++) {
+    const b = boids[i];
+    let sepX = 0, sepY = 0, cx = 0, cy = 0, avx = 0, avy = 0, count = 0;
+    for (let j = 0; j < n; j++) {
+      if (i === j) continue;
+      const o = boids[j];
+      let dx = o.x - b.x, dy = o.y - b.y;
+      // wrap-aware distance
+      if (dx > W / 2) dx -= W; else if (dx < -W / 2) dx += W;
+      if (dy > H / 2) dy -= H; else if (dy < -H / 2) dy += H;
+      const d2 = dx * dx + dy * dy;
+      if (d2 > VISION * VISION) continue;
+      count++;
+      cx += dx; cy += dy; avx += o.vx; avy += o.vy;
+      if (d2 < SEP_DIST * SEP_DIST && d2 > 0) {
+        sepX -= dx / d2; sepY -= dy / d2;
+      }
+    }
+    const f = { vx: b.vx, vy: b.vy, ax: 0, ay: 0 };
+    if (count) {
+      steer(cx / count, cy / count, f, params.cohesion.value);
+      steer(avx / count, avy / count, f, params.alignment.value);
+    }
+    steer(sepX, sepY, f, params.separation.value * 1.5);
+
+    if (mouse.active) {
+      const dx = b.x - mouse.x, dy = b.y - mouse.y, d = Math.hypot(dx, dy);
+      if (d < MOUSE_DIST && d > 0) {
+        steer(dx, dy, f, params.mouse.value * (1 - d / MOUSE_DIST) * 2);
+      }
+    }
+    // Low-pass the steering force so sudden spikes (e.g. close neighbours) fade in.
+    b.sx += (f.ax - b.sx) * FORCE_SMOOTH;
+    b.sy += (f.ay - b.sy) * FORCE_SMOOTH;
+    b.vx += b.sx; b.vy += b.sy;
+    // Ease speed toward CRUISE_SPEED each frame so it can't jitter.
+    const sp = Math.hypot(b.vx, b.vy) || 1;
+    const target = Math.min(MAX_SPEED, sp + (CRUISE_SPEED - sp) * SPEED_SMOOTH);
+    b.vx *= target / sp; b.vy *= target / sp;
+    // Random nudge to heading. Rotation keeps speed unchanged.
+    // Turn rate drifts slowly (correlated noise), not fresh random each frame.
+    b.turn = b.turn * 0.95 + (Math.random() - 0.5) * WANDER;
+    const w = b.turn, c = Math.cos(w), s = Math.sin(w);
+    const rx = b.vx * c - b.vy * s;
+    b.vy = b.vx * s + b.vy * c; b.vx = rx;
+  }
+  for (const b of boids) {
+    b.x = (b.x + b.vx + W) % W;
+    b.y = (b.y + b.vy + H) % H;
+  }
+}
+
+function draw() {
+  ctx.fillStyle = '#000';
+  ctx.fillRect(0, 0, W, H);
+  ctx.lineWidth = 1;
+  for (const b of boids) {
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(b.x - SIZE / 2, b.y - SIZE / 2, SIZE, SIZE);
+    // Direction line: velocity scaled up so it is visible.
+    ctx.strokeStyle = '#fff';
+    ctx.beginPath();
+    ctx.moveTo(b.x, b.y);
+    ctx.lineTo(b.x + b.vx * SIZE, b.y + b.vy * SIZE);
+    ctx.stroke();
+  }
+  if (mouse.active) {
+    ctx.strokeStyle = 'rgba(255, 120, 120, .5)';
+    ctx.beginPath(); ctx.arc(mouse.x, mouse.y, MOUSE_DIST, 0, Math.PI * 2); ctx.stroke();
+  }
+}
+
+function loop() { step(); draw(); requestAnimationFrame(loop); }
+loop();
+</script>
+</body>
+</html>
