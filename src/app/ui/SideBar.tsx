@@ -32,9 +32,6 @@ export default function SideBar() {
       <Link href="https://www.linkedin.com/in/andrewminghanjiang/" target="_blank" className="w-fit h-fit hover:underline">
         linkedIn
       </Link>
-      <Link href="mailto:amj7925@nyu.edu" target="_blank" className="w-fit h-fit hover:underline">
-        email
-      </Link>
       <Link href="https://docs.google.com/document/d/1Vh0rQwhL9VdwooimxvWiWOwfLQpsSa9KLT_xrYmZ_dU" target="_blank" className="w-fit h-fit hover:underline">
         resume
       </Link>

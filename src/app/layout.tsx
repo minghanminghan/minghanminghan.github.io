@@ -4,6 +4,7 @@ import { ThemeProvider } from "./context/ThemeContext"
 
 import SideBar from "./ui/SideBar"
 import TextBackground from "./ui/TextBackground"
+import TopNav from "./ui/TopNav"
 
 const figtree = Figtree({
   subsets: ["latin"],
@@ -22,7 +23,10 @@ export default function RootLayout({
           <TextBackground/>
           <div className="m-6 md:m-0 md:px-20 md:py-6 gap-3 md:gap-25 flex flex-col md:flex-row md:h-screen">
             <SideBar/>
-            {children}
+            <div className="flex-1 min-w-0 md:overflow-y-auto flex flex-col items-center gap-6 md:gap-10 pt-6 text-lg md:text-2xl">
+              <TopNav/>
+              {children}
+            </div>
           </div>
         </ThemeProvider>
       </body>
